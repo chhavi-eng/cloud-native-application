@@ -1,0 +1,17 @@
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: local-rds
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: userdb
+    ports:
+      - "3306:3306"
+
+  localstack:
+    image: localstack/localstack:3.4.0
+    container_name: local-aws
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
